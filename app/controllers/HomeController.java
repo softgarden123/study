@@ -11,18 +11,13 @@ import java.util.Map;
 
 public class HomeController extends Controller {
 
-    public List<String> list = new ArrayList<>();
-
     public Result index() {
         return ok(views.html.index.render(""));
     }
 
-//    public Result test() { return ok(views.html.index.render("test")); }
-
-    public Result test(final Http.Request request) {
+    public Result hello(final Http.Request request) {
         Map<String, String[]> form = request.body().asFormUrlEncoded();
-        list.add(form.get("name")[0]);
-        return ok(list.toString());
+        return ok(form.get("name")[0]);
     }
 
 }
